@@ -39,21 +39,24 @@ public class NettyConfig {
     @Bean
     public ServerBootstrap serverBootstrap(NettyChannelInitializer nettyChannelInitializer) {
         // ServerBootstrap: 서버 설정을 도와주는 class
-        ServerBootstrap bootstrap = new ServerBootstrap();
-        bootstrap.group(bossGroup(), workerGroup())
+        ServerBootstrap b = new ServerBootstrap();
+        b.group(bossGroup(), workerGroup())
                 // NioServerSocketChannel: incoming connections를 수락하기 위해 새로운 Channel을 객체화할 때 사용
                 .channel(NioServerSocketChannel.class)
                 .handler(new LoggingHandler(LogLevel.DEBUG))
                 .option(ChannelOption.SO_BACKLOG, backlog) //동시에 수용할 수 있는 소캣 연결 요청 수 입니다.
+                .childOption(ChannelOption.TCP_NODELAY, true)
                 .childOption(ChannelOption.SO_LINGER, 0 )
                 .childOption(ChannelOption.SO_KEEPALIVE, keepAlive)
                 .childHandler(nettyChannelInitializer); // ChannelInitializer: 새로운 Channel을 구성할 때 사용되는 특별한 handler. 주로 ChannelPipeline으로 구성
 
+        // ServerBootstarp에 다양한 Option 추가 가능
         // SO_BACKLOG: 동시에 수용 가능한 최대 incoming connections 개수
         // 이 외에도 SO_KEEPALIVE, TCP_NODELAY 등 옵션 제공
+        b.option(ChannelOption.SO_BACKLOG, backlog);
         // b.option(ChannelOption.SO_KEEPALIVE, keepAlive);
 
-        return bootstrap;
+        return b;
     }
 
     // boss: incoming connection을 수락하고, 수락한 connection을 worker에게 등록(register)
