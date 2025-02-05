@@ -3,7 +3,7 @@ package server.blindfold.chat.presentaion;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import server.blindfold.chat.application.ChatService;
-import server.blindfold.chat.module.ChatRoom;
+import server.blindfold.chat.dto.module.ChatRoom;
 
 import java.util.List;
 

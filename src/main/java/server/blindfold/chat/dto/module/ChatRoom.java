@@ -1,4 +1,4 @@
-package server.blindfold.chat.module;
+package server.blindfold.chat.dto.module;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;

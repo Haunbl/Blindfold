@@ -1,4 +1,4 @@
-package server.blindfold;
+package server.blindfold.chat.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -8,8 +8,8 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 import server.blindfold.chat.application.ChatService;
-import server.blindfold.chat.module.ChatMessage;
-import server.blindfold.chat.module.ChatRoom;
+import server.blindfold.chat.dto.module.ChatMessage;
+import server.blindfold.chat.dto.module.ChatRoom;
 
 @Slf4j
 @RequiredArgsConstructor

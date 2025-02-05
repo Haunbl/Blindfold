@@ -1,4 +1,4 @@
-package server.blindfold.chat.module;
+package server.blindfold.chat.dto.module;
 
 import lombok.*;
 

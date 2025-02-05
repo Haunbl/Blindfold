@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
-import server.blindfold.chat.module.ChatRoom;
+import server.blindfold.chat.dto.module.ChatRoom;
 
 import java.io.IOException;
 import java.util.*;
