@@ -16,6 +16,7 @@ import server.blindfold.member.infrastructure.MemberRepository;
 public class MemberService {
 
     private final MemberRepository memberRepository;
+
     @Transactional
     public void createMember(CreateMemberRequestDto request){
         memberRepository.save(
@@ -31,6 +32,14 @@ public class MemberService {
                .orElseThrow(NullPointerException::new);
 
        return FindMemberByIdResponse.form(MemberModule.form(member));
+    }
+
+    @Transactional(readOnly = true)
+    public MemberModule findMemberById(Long memberId){
+        var member = memberRepository.findMemberById(memberId)
+                .orElseThrow(NullPointerException::new);
+
+        return MemberModule.form(member);
     }
 
     public void setMasterType(MemberModule memberModule){
