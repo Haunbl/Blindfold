@@ -18,6 +18,9 @@ public class Member {
     @Column(name = "user_name")
     private String userName;
 
+    @Column(name = "user_code")
+    private String userCode;
+
     @Column(name = "steam_id")
     private String steamId;
 
@@ -25,6 +28,7 @@ public class Member {
     public static Member form(MemberModule memberModule){
         return Member.builder()
                 .userName(memberModule.getMemberName())
+                .userCode(memberModule.getMemberCode())
                 .steamId(memberModule.getSteamId())
                 .build();
     }

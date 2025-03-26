@@ -36,5 +36,5 @@ out/
 ### VS Code ###
 .vscode/
 
-###서버 설정 정보###
-src/main/resources/*.yml
+####서버 설정 정보###
+#src/main/resources/*.yml
