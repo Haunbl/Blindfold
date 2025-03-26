@@ -25,7 +25,7 @@ public class Room {
 
     @PostConstruct
     public void init() {
-        room = new MemberModule[4];
+        room = new MemberModule[MAX_PLAYER];
     }
 
     /**
@@ -83,10 +83,12 @@ public class Room {
      * @param master
      * @param targetMember
      */
-    public void giveMasterRule(MemberModule master,MemberModule targetMember){
+    public void giveMasterRule(MemberModule master, MemberModule targetMember){
         if(master.getMemberType().equals(MemberType.MASTER)){
             master.setMemberType(MemberType.GUEST);
             targetMember.setMemberType(MemberType.MASTER);
+
+            this.master = targetMember;
         }
     }
 }
