@@ -27,7 +27,6 @@ public class WebSocketChatHandler extends TextWebSocketHandler {
         log.info("payload {}", payload);
 
         ChatMessage message = objectMapper.readValue(textMessage.getPayload(), ChatMessage.class);
-        ChatRoom room = chatService.findRoomById(message.getRoomId());
-        room.handleActions(session, message, chatService);
+        chatService.handleActions(session, message);
     }
 }
